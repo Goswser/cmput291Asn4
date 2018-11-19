@@ -20,8 +20,17 @@ public class Main {
 			System.out.println("input file not detected");
 			System.exit(1);
 		}
+		Path tfile = Paths.get("terms.txt");
+		Path dfile = Paths.get("pdates.txt");
+		Path pfile = Paths.get("prices.txt");
+		Path afile = Paths.get("ads.txt");
 		
 		try {
+			Files.deleteIfExists(tfile);
+			Files.deleteIfExists(dfile);
+			Files.deleteIfExists(pfile);
+			Files.deleteIfExists(afile);
+			
 			File file = new File(args[0]);
 			Scanner fp = new Scanner(file);
 			
