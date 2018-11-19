@@ -190,7 +190,7 @@ public class Main {
 		}
 		
 		
-		Path file = Paths.get("../terms.txt");
+		Path file = Paths.get("terms.txt");
 		Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 	}
 	
@@ -199,7 +199,7 @@ public class Main {
 		
 		lines.add(date + ":" + aid + "," + cat + "," + loc + "\n");
 		
-		Path file = Paths.get("../pdates.txt");
+		Path file = Paths.get("pdates.txt");
 		Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 	}
 	
@@ -213,7 +213,7 @@ public class Main {
 		
 		lines.add(price + ":" + aid + "," + cat + "," + loc + "\n");
 		
-		Path file = Paths.get("../prices.txt");
+		Path file = Paths.get("prices.txt");
 		Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 	}
 	
@@ -222,7 +222,7 @@ public class Main {
 		
 		lines.add(aid + ":" + line + "\n");
 		
-		Path file = Paths.get("../ads.txt");
+		Path file = Paths.get("ads.txt");
 		Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 	}
 }
