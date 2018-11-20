@@ -155,18 +155,24 @@ public class Main {
 	
 	private static String ParseString(String s) {
 		s = ignoreSpecial(s);
-		char[] w = s.toCharArray();
-		String sb = "";
+		//char[] w = s.toCharArray();
+		String sb = null;
 		
+		Matcher m = Pattern.compile("[A-Za-z0-9_-]+").matcher(s);
+		if (m.find()) {
+			sb = m.group();
+		}
+		/*
 		for(char ch : w) {
 			//TODO FIX THIS BULLSHIT
-			if ((ch < 'A' && ch > 'Z' && ch < 'a' && ch > 'z' && ch < '0' && ch >'9') && (ch != '_' && ch != '-')) {
+			if (ch < 'A' && ch > 'Z' && ch < 'a' && ch > 'z' && ch < '0' && ch >'9' && ch != '_' && ch != '-') {
 				sb = sb + "";
 			} else {
 				sb = sb + String.valueOf(ch);
 			}
 		}
-		if (sb.length() <= 2 ) {
+		*/
+		if (sb.length() <= 2) {
 			return null;
 		}
 		
@@ -180,7 +186,7 @@ public class Main {
 		List<String> terms = new ArrayList<>();
 		
 		if (title.contains(" ")) {
-			String words[] = title.trim().replaceAll("[\\,.]" , "").split("\\s+");
+			String words[] = title.trim().replaceAll("[\\,./]" , " ").split("\\s+");
 			for (int i = 0; i < words.length; i++) {
 				if (words[i].length() > 2) {
 					String join = ParseString(words[i]);
@@ -197,7 +203,7 @@ public class Main {
 		}
 		
 		if (desc.contains(" ")) {
-			String words[] = desc.trim().replaceAll("[\\,.]" , "").split("\\s+");
+			String words[] = desc.trim().replaceAll("[\\,./]" , " ").split("\\s+");
 			for (int i = 0; i < words.length; i++) {
 				if (words[i].length() > 2) {
 					String join = ParseString(words[i]);
