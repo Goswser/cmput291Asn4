@@ -156,13 +156,20 @@ public class Main {
 	private static String ParseString(String s) {
 		s = ignoreSpecial(s);
 		char[] w = s.toCharArray();
+		String sb = "";
 		
 		for(char ch : w) {
-			if ((ch < 'A' && ch > 'Z' && ch < 'a' && ch > 'z' && ch < '0' && ch >'9') && (ch != '_' && ch != '-')) {
-				//extra filter i guess
+			//TODO FIX THIS BULLSHIT!!!!!!!!!!
+			if (((ch < 'A' && ch > 'Z') && (ch < 'a' && ch > 'z') && (ch < '0' && ch >'9')) || (ch != '_' && ch != '-')) {
+				sb = sb + "";
+			} else {
+				sb = sb + String.valueOf(ch);
 			}
 		}
-		return s;
+		if (sb.length() <= 2 ) {
+			return null;
+		}
+		return sb;
 	}
 	
 	private static void terms(String title, String desc, String aid) throws IOException {
@@ -173,25 +180,36 @@ public class Main {
 		
 		if (title.contains(" ")) {
 			String words[] = title.trim().replaceAll("[\\,.]" , "").split("\\s+");
-			System.out.println(words.length);
 			for (int i = 0; i < words.length; i++) {
 				if (words[i].length() > 2) {
-					terms.add(ParseString(words[i]).toLowerCase());
+					String join = ParseString(words[i]);
+					if (join != null) {
+						terms.add(join.toLowerCase());
+					}
 				}
 			}
 		} else {
-			terms.add(ParseString(title).toLowerCase());
+			String join = ParseString(title);
+			if (join != null) {
+				terms.add(join.toLowerCase());
+			}
 		}
 		
 		if (desc.contains(" ")) {
 			String words[] = desc.trim().replaceAll("[\\,.]" , "").split("\\s+");
 			for (int i = 0; i < words.length; i++) {
 				if (words[i].length() > 2) {
-					terms.add(ParseString(words[i]).toLowerCase());
+					String join = ParseString(words[i]);
+					if (join != null) {
+						terms.add(join.toLowerCase());
+					}
 				}
 			}
 		} else {
-			terms.add(ParseString(desc).toLowerCase());
+			String join = ParseString(desc);
+			if (join != null) {
+				terms.add(join.toLowerCase());
+			}
 		}
 					
 		for (String s : terms) {
