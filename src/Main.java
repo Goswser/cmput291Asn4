@@ -159,8 +159,8 @@ public class Main {
 		String sb = "";
 		
 		for(char ch : w) {
-			//TODO FIX THIS BULLSHIT!!!!!!!!!!
-			if (((ch < 'A' && ch > 'Z') && (ch < 'a' && ch > 'z') && (ch < '0' && ch >'9')) || (ch != '_' && ch != '-')) {
+			//TODO FIX THIS BULLSHIT
+			if ((ch < 'A' && ch > 'Z' && ch < 'a' && ch > 'z' && ch < '0' && ch >'9') && (ch != '_' && ch != '-')) {
 				sb = sb + "";
 			} else {
 				sb = sb + String.valueOf(ch);
@@ -169,6 +169,7 @@ public class Main {
 		if (sb.length() <= 2 ) {
 			return null;
 		}
+		
 		return sb;
 	}
 	
