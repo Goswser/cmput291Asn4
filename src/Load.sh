@@ -1,9 +1,9 @@
 #!/bin/bash
 
-sort -u ads.txt -o ads.txt
-sort -u terms.txt -o terms.txt
-sort -u prices.txt -o prices.txt
-sort -u pdates.txt -o pdates.txt
+sort -fu ads.txt -o ads.txt
+sort -fu terms.txt -o terms.txt
+sort -fu prices.txt -o prices.txt
+sort -fu pdates.txt -o pdates.txt
 
 db_load -T -f ads.txt -t hash ad.idx
 db_load -T -f terms.txt -t btree te.idx
