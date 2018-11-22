@@ -162,16 +162,7 @@ public class Main {
 		if (m.find()) {
 			sb = m.group();
 		}
-		/*
-		for(char ch : w) {
-			//TODO FIX THIS BULLSHIT
-			if (ch < 'A' && ch > 'Z' && ch < 'a' && ch > 'z' && ch < '0' && ch >'9' && ch != '_' && ch != '-') {
-				sb = sb + "";
-			} else {
-				sb = sb + String.valueOf(ch);
-			}
-		}
-		*/
+		
 		if (sb.length() <= 2) {
 			return null;
 		}
@@ -220,7 +211,7 @@ public class Main {
 		}
 					
 		for (String s : terms) {
-			lines.add(s + ":" + aid + "\n");
+			lines.add(s + ":" + aid);
 		}
 		
 		
@@ -231,7 +222,7 @@ public class Main {
 	private static void pdates(String date, String cat, String loc, String aid) throws IOException {
 		List<String> lines = new ArrayList<>();
 		
-		lines.add(date + ":" + aid + "," + cat + "," + loc + "\n");
+		lines.add(date + ":" + aid + "," + cat + "," + loc);
 		
 		Path file = Paths.get("pdates.txt");
 		Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
@@ -245,7 +236,7 @@ public class Main {
 		
 		//TODO check this for non empty price before price is passed to this function
 		
-		lines.add(price + ":" + aid + "," + cat + "," + loc + "\n");
+		lines.add(price + ":" + aid + "," + cat + "," + loc);
 		
 		Path file = Paths.get("prices.txt");
 		Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
@@ -254,7 +245,7 @@ public class Main {
 	private static void ads(String aid, String line) throws IOException {
 		List<String> lines = new ArrayList<>();
 		
-		lines.add(aid + ":" + line + "\n");
+		lines.add(aid + ":" + line);
 		
 		Path file = Paths.get("ads.txt");
 		Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
