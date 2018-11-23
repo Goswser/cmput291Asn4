@@ -5,7 +5,7 @@ sort -fu terms.txt -o terms.txt
 sort -fu prices.txt -o prices.txt
 sort -fu pdates.txt -o pdates.txt
 
-db_load -T -f ads.txt -t hash ad.idx
-db_load -T -f terms.txt -t btree te.idx
-db_load -T -f prices.txt -t btree pr.idx
-db_load -T -f pdates.txt -t btree da.idx
+cat ads.txt | ./break.pl | db_load -T -t hash ad.idx
+cat terms.txt | ./break.pl | db_load -T -t btree te.idx
+cat prices.txt | ./break.pl | db_load -T -t btree pr.idx
+cat pdates.txt | ./break.pl | db_load -T -t btree da.idx
